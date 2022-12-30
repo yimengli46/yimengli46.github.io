@@ -139,7 +139,7 @@
 <html>
 
 <head>
-    <title>Comparison of Model Free and Model-Based Learning-Informed Planning for PointGoal Navigation</title>
+    <title>Learning View and Target Invariant Visual Servoing for Navigation</title>
     <meta property="og:title" content="" />
     <meta property="og:image" content="" />
     <link rel="apple-touch-icon" sizes="180x180" href="">
@@ -153,10 +153,8 @@
 <body>
     <br>
     <center>
-        <span style="font-size:42px">Comparison of Model Free and Model-Based <br>
-            Learning-Informed Planning for PointGoal Navigation
+        <span style="font-size:42px">Learning View and Target Invariant Visual Servoing<br> for Navigation
         </span>
-
     </center>
 
     <br><br>
@@ -165,18 +163,6 @@
             <td align=center width=100px>
                 <center>
                     <span style="font-size:20px"><a href="https://yimengli46.github.io/">Yimeng Li*</a></span>
-                </center>
-            </td>
-
-            <td align=center width=100px>
-                <center>
-                    <span style="font-size:20px"><a href="">Arnab Debnath*</a></span>
-                </center>
-            </td>
-
-            <td align=center width=100px>
-                <center>
-                    <span style="font-size:20px"><a href="https://cs.gmu.edu/~gjstein/">Gregory Stein</a></span>
                 </center>
             </td>
 
@@ -203,7 +189,7 @@
         <tr>
             <td align=center width=100px>
                 <center>
-                    <span style="font-size:20px"><a href=https://gjstein.github.io/corl2022wkshp-long-horizon-planning/>In CoRL 2022 LHP Workshop</span>
+                    <span style="font-size:20px">In ICRA 2020</span>
                 </center>
             </td>
         </tr>
@@ -214,7 +200,7 @@
         <tr>
             <td align=center width=100px>
                 <center>
-                    <span style="font-size:20px"><a href="https://openreview.net/forum?id=2s92OhjT4L">[Paper]</a></span>
+                    <span style="font-size:20px"><a href="https://arxiv.org/abs/2003.02327">[Paper]</a></span>
                 </center>
             </td>
 
@@ -227,7 +213,7 @@
 
             <td align=center width=100px>
                 <center>
-                    <span style="font-size:20px"><a href="https://youtu.be/Pq4edWdwD98">[Video]</a></span>
+                    <span style="font-size:20px"><a href="https://youtu.be/MdAb3BoB2VA">[Video]</a></span>
                 </center>
             </td>
 
@@ -247,24 +233,21 @@
         <tr>
             <td width=1000px>
                 <center>
-                    <!-- img src="./resources/images/approach.png" width="1000px"></img>-->
                     <video width="900" autoplay muted controls loop>
-                        <source src="./resources/images/DP_YFu_merge.mp4" type="video/mp4">
+                        <source src="./resources/images/feature_map.mp4" type="video/mp4">
                     </video>
                 </center>
             </td>
         </tr>
     </table>
-
     <table align=center width=600px>
         <tr>
             <td width=600px>
                 <center>
                     <span style="font-size:14px"><i>
-                            In the point goal navigation task,  a robot is deployed in a previously-unseen environment and is required to navigate to a location within limited number of steps.
-                            Here we show a running example of navigating to the point goal with the a frontier-based approach.
-                            A frontier is a boundary between free and unknown space, as denoted by the green pixels. 
-                            Yellow pixels are the selected frontier.
+                        In this paper, we study the task of training an agent for short-range navigation to the desired location. 
+                        The target is either represented as a view image or an image of the target object.
+                        In this example, the targeted view is visualized in the first-row first column.
                         </i>
                     </span>
                 </center>
@@ -273,13 +256,10 @@
     </table>
 
     <br><br>
-    We compare the state-of-the-art Deep Reinforcement Learning based approaches with Partially Observable Markov Decision Process (POMDP) formulation of the point goal navigation problem. 
-    We adapt the (POMDP) sub-goal framework proposed by Stein et al. and modify the component that estimates frontier properties by using partial semantic maps of indoor scenes built from images' semantic segmentation. 
-    In addition to the well-known completeness of the model-based approach, we demonstrate that it is robust and efficient in that it leverages informative, learned properties of the frontiers compared to an optimistic frontier-based planner. 
-    We also demonstrate its data efficiency compared to the end-to-end deep reinforcement learning approaches. 
-    We compare our results against an optimistic planner, ANS and DD-PPO
-    on Matterport3D dataset using the Habitat Simulator.
-    We show comparable, though slightly worse performance than the SOTA DD-PPO approach, yet with far fewer data. 
+    The advances in deep reinforcement learning recently revived interest in data-driven learning based approaches to navigation. In this paper we propose to learn viewpoint invariant and target invariant visual servoing for local mobile robot navigation; given an initial view and the goal view or an image of a target, we train deep convolutional network controller for reaching the goal. 
+    We present a new architecture for this task which rests on the ability of establishing correspondences between the initial and goal view and novel reward structure motivated by the traditional feedback control error. 
+    The advantage of the proposed model is that it does not require calibration and depth information and achieves robust visual servoing in a variety of environments and targets without any parameter fine tuning. We present comprehensive evaluation of the approach and comparison with other deep learning architectures as well as classical visual servoing methods in visually realistic simulation environment. 
+    The presented model overcomes the brittleness of classical visual servoing based methods and achieves significantly higher generalization capability compared to the previous learning approaches.
     <br><br>
 
     <hr>
@@ -292,7 +272,7 @@
             <td width=600px>
                 <center>
                     <div class="video">
-                        <iframe width="720" height="405" src="https://www.youtube.com/embed/Pq4edWdwD98" frameborder="0"
+                        <iframe width="720" height="405" src="https://youtube.com/embed/MdAb3BoB2VA" frameborder="0"
                             allowfullscreen></iframe>
                     </div>
                 </center>
@@ -302,15 +282,28 @@
     <br>
 
     <center>
-        <h3>Learning over Subgoals Planner</h3>
+        <h3>Approach: train a policy for visual servoing </h3>
     </center>
     <table align=center width=900px>
         <tr>
             <td width=600px>
                 <center>
                   <div class="image">
-                    <img src='./resources/images/approach.png' width="785" style="border-style: none">
+                    <img src='./resources/images/approach.png' width="750" style="border-style: none">
                   </div>
+                </center>
+            </td>
+        </tr>
+    </table>
+    
+    <table align=center width=600px>
+        <tr>
+            <td width=600px>
+                <center>
+                    <span style="font-size:14px"><i>
+                        We compute Correspondence Map between Current View and Target View and input it into a DQN to predict Q-values for each action.
+                        </i>
+                    </span>
                 </center>
             </td>
         </tr>
@@ -318,15 +311,28 @@
     <br>
 
     <center>
-        <h3>Learning Module</h3>
+        <h3>Visual Servoing Policy Architecture</h3>
     </center>
     <table align=center width=900px>
         <tr>
             <td width=600px>
                 <center>
                   <div class="image">
-                    <img src='./resources/images/unet.png' width="785" height="301" style="border-style: none">
+                    <img src='./resources/images/architecture.png' width="750" style="border-style: none">
                   </div>
+                </center>
+            </td>
+        </tr>
+    </table>
+    <table align=center width=600px>
+        <tr>
+            <td width=600px>
+                <center>
+                    <span style="font-size:14px"><i>
+                        We model DQN as a deep neural network.
+                        The layers can be separated into perception and action in terms of functionality.
+                        </i>
+                    </span>
                 </center>
             </td>
         </tr>
@@ -334,15 +340,29 @@
     <br>
 
     <center>
-        <h3>Results</h3>
+        <h3>ImageGoal Navigation: driving to a target object</h3>
     </center>
     <table align=center width=900px>
         <tr>
             <td width=600px>
                 <center>
-                  <div class="image">
-                    <img src='./resources/images/success_cases.png' width="759" height="392" style="border-style: none">
-                  </div>
+                    <video width="800" autoplay muted controls loop>
+                        <source src="./resources/images/goToObj.mp4" type="video/mp4">
+                    </video>
+                </center>
+            </td>
+        </tr>
+    </table>
+    <table align=center width=600px>
+        <tr>
+            <td width=600px>
+                <center>
+                    <span style="font-size:14px"><i>
+                        Even though the policy is trained to move to a targeted view, our agent can also drive to a target object without additional training.
+Here is one example. We want our agent to go to the couch.
+We cut out the couch patch from the initial view and then compute the correspondence between the target object and the current observation.
+                        </i>
+                    </span>
                 </center>
             </td>
         </tr>
@@ -361,13 +381,13 @@
             <td>
                 <div class="paper" id="assemblies19_bib">
                         <pre xml:space="preserve">
-                        @inproceedings{
-                            li2022comparison,
-                            title={Comparison of Model Free and Model-Based Learning-Informed Planning for PointGoal Navigation},
-                            author={Yimeng Li and Arnab Debnath and Gregory J. Stein and Jana Kosecka},
-                            booktitle={CoRL 2022 Workshop on Learning, Perception, and Abstraction for Long-Horizon Planning},
-                            year={2022},
-                            url={https://openreview.net/forum?id=2s92OhjT4L}
+                        @inproceedings{li2020learning,
+                          title={Learning view and target invariant visual servoing for navigation},
+                          author={Li, Yimeng and Ko{\v{s}}ecka, Jana},
+                          booktitle={2020 IEEE International Conference on Robotics and Automation (ICRA)},
+                          pages={658--664},
+                          year={2020},
+                          organization={IEEE}
                         }
                         </pre>
                   </div>
@@ -384,7 +404,7 @@
                 <left>
                     <center>
                         <h1>Acknowledgements</h1>
-                        We thank members of the <a href="https://github.com/GMU-vision-robotics">GMU Vision and Robotics Lab</a> and <a href="https://cs.gmu.edu/~gjstein/">RAIL</a>. 
+                        We thank members of the <a href="https://github.com/GMU-vision-robotics">GMU Vision and Robotics Lab</a>. 
                         <br>This webpage template was borrowed from some <a
                             href="https://richzhang.github.io/colorization/">colorful folks</a>.
                     </center>
