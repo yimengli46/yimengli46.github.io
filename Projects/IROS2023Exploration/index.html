@@ -219,7 +219,13 @@
 
             <td align=center width=100px>
                 <center>
-                    <span style="font-size:20px"><a href="https://youtu.be/vTr01A6Jna4">[Video]</a></span>
+                    <span style="font-size:20px"><a href="https://youtu.be/wOwRMQJZM68">[Video]</a></span>
+                </center>
+            </td>
+
+            <td align=center width=100px>
+                <center>
+                    <span style="font-size:20px"><a href="https://github.com/yimengli46/bellman-exploration">[Code]</a></span>
                 </center>
             </td>
 
@@ -244,15 +250,14 @@
     <table align=center width=600px>
         <tr>
             <td width=600px text-align: left>
-                <center>
-                    <span style="font-size:14px" ><i>
+                
+                    <span style="font-size:18px; display: block; margin-top: 10px;" >
 At each step, the agent will receive a 360 panorama or 90 degree egocentric observation.
 Here in the video, we show a running example of our model exploring a novel scene using a frontier-based approach.
 A frontier is a boundary between free and unknown space, as denoted by the green pixels in the video. 
 Yellow pixels are the selected frontier.
-                        </i>
                     </span>
-                </center>
+                
             </td>
         </tr>
     </table>
@@ -283,6 +288,7 @@ Yellow pixels are the selected frontier.
     <center>
         <h3>Learning-Augmented Model-Based Frontier Exploration (LFE)</h3>
     </center>
+
     <table align=center width=900px>
         <tr>
             <td width=600px>
@@ -291,6 +297,33 @@ Yellow pixels are the selected frontier.
                     <img src='./resources/images/approach.png' width="785" style="border-style: none">
                   </div>
                 </center>
+
+                <span style="font-size:18px;display: block; margin-top: 10px;" >
+                    This diagram gives an overview of our learning-augmented model-based exploration algorithm, which allows us to compute the expected value of each action in a computationally feasible way for planning through an unknown environment. We use learning modules to estimate the terms R_A, D_in and D_out, thereby introducing prior knowledge about environment regularities into the decision-making procedure.
+                 </span>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+    <center>
+        <h3>Architecture of the entire exploration system</h3>
+    </center>
+    <table align=center width=900px>
+        <tr>
+            <td width=600px>
+                <center>
+                  <div class="image">
+                    <img src='./resources/images/modules.png' width="1200" style="border-style: none">
+                  </div>
+                </center>
+                <span style="font-size:18px; display: block; margin-top: 10px;" >
+The detected and the selected frontiers are drawn in green and yellow respectively. Our proposed
+Learning-augmented model-based frontier-based exploration is used for the frontier selection module. We design two learning modules to estimate the
+frontier properties. The UNet model takes in the local occupancy map and local semantic map and estimates values for all the visible frontiers on the map.
+The ResNet-18 model takes in the egocentric depth and semantic observation corresponding to a frontier and estimates the values only for this frontier.
+                </span>
+                
             </td>
         </tr>
     </table>
@@ -307,6 +340,15 @@ Yellow pixels are the selected frontier.
                     <img src='./resources/images/planning_strategies.png' width="700" style="border-style: none">
                   </div>
                 </center>
+
+                <span style="font-size:18px;display: block; margin-top: 10px;" >
+                    In frontier-based methods, the robot’s actions correspond to navigation to frontiers.
+These actions rely on the partial map to plan and reliably navigate through space the robot has already seen. 
+Existing Approaches greedily select the next frontier-action.
+
+Classical non-learning greedy exploration from Brian greedily select the next frontier-action via simple heuristics by navigating to the nearest frontier.
+Recent work called PONI uses visual sensing and replaces simple heuristics with a learning-based module.
+                </span>
             </td>
         </tr>
     </table>
@@ -323,6 +365,12 @@ Yellow pixels are the selected frontier.
                     <img src='./resources/images/unet_resnet.png' width="500" style="border-style: none">
                   </div>
                 </center>
+
+                <span style="font-size:18px; display: block; margin-top: 10px;" >
+                    We develop a learning module for estimating frontier properties from a partial map or egocentric views.<br>
+For the map based model, We use a U-net architecture where the input to the U-Net model is the currently observed occupancy and semantic map.
+For the view based model, the input to the ResNet-18 model is the egocentric depth and semantic observation.
+                </span>
             </td>
         </tr>
     </table>
